@@ -1,0 +1,84 @@
+<html lang="en">
+    <head>
+        <title>
+            Image
+        </title>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            .a{
+                margin-left:300px;
+                margin-right:300px;
+                margin-top:30px;
+                margin-bottom:300px;
+                background-color:white;
+            }
+        </style>
+    </head>
+
+<body style="background-color:grey;">
+    <h1><center>Edit Details</center></h1>
+    <form class="mx-1 mx-md-4" method="post" enctype="multipart/form-data">
+        {%  csrf_token %}
+        <div class="a">
+        <div class="d-flex flex-row align-items-center mb-4">
+         
+          <div class="form-outline flex-fill mb-0">
+            <label class="form-label" for="form3Example1c">Your Name</label>
+            <input type="text" name="username" value="{{users.UserName}}" id="form3Example1c" class="form-control" />
+           
+          </div>
+        </div>
+
+        <div class="d-flex flex-row align-items-center mb-4">
+         
+          <div class="form-outline flex-fill mb-0">
+            <label class="form-label" for="form3Example3c"> Email Address</label>
+            <input type="email" name="email" value="{{users.Email}}" id="form3Example3c" class="form-control" />
+           
+          </div>
+        </div>
+
+        <div class="d-flex flex-row align-items-center mb-4">
+          
+          <div class="form-outline flex-fill mb-0">
+            <label class="form-label" for="form3Example4c">Contact Number</label>
+            <input type="text" name="number" value="{{users.ContactNumber}}" id="form3Example4c" class="form-control" />
+            
+          </div>
+        </div>
+
+        <div class="d-flex flex-row align-items-center mb-4">
+         
+          <div class="form-outline flex-fill mb-0">
+            <label class="form-label" for="form3Example4c">Upload Your Photo</label>
+            {% if users.Image %}
+            <img src="{{users.Image.url}}">
+            {% endif %}
+            <input type="file" name="file" id="form3Example4c" class="form-control" accept="image/*">
+            
+          </div>
+        </div>
+
+        
+
+        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+          <button type="submit" class="btn btn-primary btn-lg">Update</button>
+        </div>
+    </div>
+      </form>
+
+</body>
+</html>

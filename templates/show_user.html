@@ -1,0 +1,57 @@
+<html lang="en">
+    <head>
+        <title>
+            Image
+        </title>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+        <body>
+            <div class="container">
+                <h2><center>User Details...</center></h2>
+                           
+                <table class="table table-hover" border="2">
+                  <thead>
+                    <tr>
+                      <th>User Name</th>
+                      <th>Email Address</th>
+                      <th>Contact Number</th>
+                      <th>Image</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for usr in users %}
+                    <tr>
+                      <td>{{usr.UserName}}</td>
+                      <td>{{usr.Email}}</td>
+                      <td>{{usr.ContactNumber}}</td>
+                      
+                      <td>
+                        
+                        {% if usr.Image %}
+                        <img src="{{ usr.Image.url }}">
+                        {% else %}
+                        <img src="{% static 'images/default.jpg' %}">
+                        {% endif %}
+                      </td>
+                      <td><a href="{% url 'edit' usr.id %}">Edit</a><br><a href="{% url 'delete' usr.id %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+        </body>
+        </html>
